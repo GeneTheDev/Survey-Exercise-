@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+
+{{ question.question }}
+
+{% for choice in question.choices %}
+
+<button> {{choice}} </button>
+
+{% endfor %} <button>Continue</button>
+
+{% endblock %}
