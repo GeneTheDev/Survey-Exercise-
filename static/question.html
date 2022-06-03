@@ -1,11 +1,17 @@
-{% extends 'base.html' %} {% block content %}
+<html>
 
-{{ question.question }}
+<body>
+    {% extends 'base.html' %} {% block content %}
 
-{% for choice in question.choices %}
+    {{ question.question }}
 
-<button> {{choice}} </button>
+    {% for choice in question.choices %}
 
-{% endfor %} <button>Continue</button>
+    <button> {{choice}} </button>
 
-{% endblock %}
+    {% endfor %} <button>Continue</button>
+
+    {% endblock %}
+</body>
+
+</html>

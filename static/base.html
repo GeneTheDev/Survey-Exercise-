@@ -1,5 +1,11 @@
-{% for msg in get_flashed_messages() %}
+<html>
 
-{{ msg }}
+<body>
+    {% for msg in get_flashed_messages() %}
 
-{% endfor %} {% block content %} {% endblock %}
+    {{ msg }}
+
+    {% endfor %} {% block content %} {% endblock %}
+</body>
+
+</html>

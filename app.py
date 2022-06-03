@@ -8,7 +8,27 @@ app = Flask(__name__)
 
 app.debug = True
 app.config['SECRET_KEY'] = '<replace with a secret key>'
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 toolbar = DebugToolbarExtension(app)
+
+@app.route("/")
+def show_pick_survey_form():
+    """Show pick-a-survey form"""
+
+    return render_template("pick-survey.html", surveys=surveys)
+
+
+@app.route("/",methods=["POST"])
+"""Selects survey"""
+def pick_survey():
+    survey_id =  request.form['survey_code']
+
+    if request.cookies.get(f"completed_{survey_id}"):
+        return render_template("already-done.html")
+
+        survey = surveys[survey_id]
+        session[CURRENT_SURVEY_KEY] = survey_id
+        return render_template("survey_start.html", survey=survey)
 
 @app.route("/")
 def show_survey_start():
